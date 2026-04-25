@@ -98,13 +98,13 @@
             flex-direction: column;
             gap: 18px;
         }
-        /* Botão Dourado com efeito de luz */
+        /* Botão Branco Luxury com efeito de luz dourada */
         .link-card {
             position: relative;
             padding: 16px 20px;
             border-radius: 50px;
             text-decoration: none;
-            color: #fff;
+            color: var(--gold-dark); /* Texto agora é dourado escuro */
             font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 2px;
@@ -113,11 +113,12 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: var(--gold);
+            background: #fff;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
-            box-shadow: 0 8px 20px rgba(184, 134, 11, 0.25);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2); /* Borda dourada sutil */
         }
-        /* O brilho animado */
+        /* O brilho animado (agora mais visível sobre o branco) */
         .link-card::before {
             content: '';
             position: absolute;
@@ -128,19 +129,19 @@
             background: conic-gradient(
                 transparent, 
                 transparent, 
-                rgba(255, 255, 255, 0.9), 
+                rgba(212, 175, 55, 0.4), /* Brilho dourado */
                 transparent,
                 transparent
             );
-            animation: rotate 3s linear infinite;
+            animation: rotate 4s linear infinite;
             z-index: 1;
         }
-        /* O fundo metálico do botão */
+        /* O fundo branco do botão */
         .link-card::after {
             content: '';
             position: absolute;
             inset: 2px; 
-            background: linear-gradient(135deg, #d4af37 0%, #f9e498 50%, #b8860b 100%);
+            background: #fff;
             border-radius: 50px;
             z-index: 2;
         }
@@ -151,7 +152,7 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+            text-shadow: none; /* Removendo sombra para clareza no branco */
             padding: 0 40px;
         }
         .icon-box {
@@ -160,6 +161,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        .icon-svg {
+            fill: var(--gold-dark); /* Ícones dourados */
+            width: 22px;
+            height: 22px;
         }
         @keyframes rotate {
             from { transform: rotate(0deg); }
@@ -179,16 +185,10 @@
             opacity: 0.5;
             padding-bottom: 40px;
         }
-        .icon-svg {
-            fill: #fff;
-            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
-            width: 22px;
-            height: 22px;
-        }
         @media (min-width: 768px) {
             .link-card:hover {
                 transform: translateY(-3px);
-                box-shadow: 0 15px 30px rgba(184, 134, 11, 0.4);
+                box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
             }
         }
     </style>
