@@ -112,13 +112,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #C9A96E; /* Fundo base ouro para o brilho */
+            background: #C9A96E; /* Ouro base para o efeito */
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             overflow: hidden;
             border: none;
         }
-        /* O brilho giratório dourado */
         .link-card::before {
             content: '';
             position: absolute;
@@ -129,18 +128,17 @@
             background: conic-gradient(
                 transparent, 
                 transparent, 
-                rgba(255, 255, 255, 0.8), /* Luz branca metálica */
+                rgba(255, 255, 255, 0.8), 
                 transparent,
                 transparent
             );
             animation: rotate 4s linear infinite;
             z-index: 1;
         }
-        /* O fundo Blush Pink (cobre o centro do brilho) */
         .link-card::after {
             content: '';
             position: absolute;
-            inset: 2px; /* Margem para o brilho aparecer na borda */
+            inset: 2px; 
             background: #D8B4A0;
             border-radius: 999px;
             z-index: 2;
@@ -164,14 +162,13 @@
         }
         .icon-svg {
             fill: #FFFFFF;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             transition: transform 0.3s ease;
         }
-        @keyframes pulse-gold {
-            0% { transform: scale(0.98); opacity: 0.8; }
-            50% { transform: scale(1.05); opacity: 0; }
-            100% { transform: scale(0.98); opacity: 0; }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         .link-card:active {
             transform: scale(0.98);
@@ -191,7 +188,6 @@
             .link-card:hover {
                 transform: translateY(-4px) scale(1.02);
                 box-shadow: 0 12px 30px rgba(201, 169, 110, 0.25);
-                background: #e2c0ad;
             }
             .link-card:hover::after {
                 background: #e2c0ad;
@@ -218,10 +214,11 @@
             </div>
             <h1 class="brand-name serif">R&S Makeup</h1>
             <p class="bio">Beleza simples. Resultado elegante <span class="gold-accent">✨</span></p>
-            <!-- Secção de Links -->
+            <!-- Secção de Links Hardcoded (Sem Admin) -->
             <div class="links-wrapper">
                 
-                <a href="#" id="btn-loja" class="link-card">
+                <!-- Link da Loja -->
+                <a href="https://rsmakeup.shop/" target="_blank" class="link-card">
                     <span class="btn-content">
                         <span class="icon-box">
                             <svg class="icon-svg" viewBox="0 0 576 512">
@@ -231,7 +228,8 @@
                         <span>Loja / Catálogo</span>
                     </span>
                 </a>
-                <a href="#" id="btn-whatsapp" class="link-card">
+                <!-- WhatsApp (Substitua o número abaixo quando tiver o definitivo) -->
+                <a href="https://wa.me/5500000000000?text=Olá! Gostaria de saber mais sobre a R&S Makeup." target="_blank" class="link-card">
                     <span class="btn-content">
                         <span class="icon-box">
                             <svg class="icon-svg" viewBox="0 0 448 512">
@@ -241,7 +239,8 @@
                         <span>WhatsApp</span>
                     </span>
                 </a>
-                <a href="#" id="btn-tiktok" class="link-card">
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@rs_makeshop?_r=1&_t=ZS-95AFYdf9fSp" target="_blank" class="link-card">
                     <span class="btn-content">
                         <span class="icon-box">
                             <svg class="icon-svg" viewBox="0 0 448 512">
@@ -256,29 +255,8 @@
                 © R&S Makeup
             </div>
             
-            <!-- Link discreto para admin (opcional) -->
-            <a href="admin.html" style="position:fixed; bottom:10px; right:10px; opacity:0.1; font-size:10px; text-decoration:none; color:inherit;">Admin</a>
         </div>
     </div>
-    <!-- Script para carregar os links dinamicamente -->
-    <script>
-        function loadLinks() {
-            const wpp = localStorage.getItem('rs_wpp') || '5531999999999';
-            const store = localStorage.getItem('rs_store_link') || '#';
-            const tiktok = localStorage.getItem('rs_tiktok_link') || '#';
-            const btnWpp = document.getElementById('btn-whatsapp');
-            const btnStore = document.getElementById('btn-loja');
-            const btnTiktok = document.getElementById('btn-tiktok');
-            if (btnWpp) {
-                const cleanWpp = wpp.replace(/\D/g,'');
-                const msg = encodeURIComponent('Olá! Gostaria de saber mais sobre a R&S Makeup.');
-                btnWpp.href = `https://wa.me/${cleanWpp}?text=${msg}`;
-            }
-            if (btnStore) btnStore.href = store;
-            if (btnTiktok) btnTiktok.href = tiktok;
-        }
-        document.addEventListener('DOMContentLoaded', loadLinks);
-    </script>
     <!-- Unicorn Studio Script -->
     <script type="text/javascript">
     !function(){
