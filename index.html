@@ -98,13 +98,13 @@
             flex-direction: column;
             gap: 18px;
         }
-        /* Botão Off-White Luxury */
+        /* Botão Beauty Luxury (Blush & Gold) */
         .link-card {
             position: relative;
             padding: 16px 20px;
-            border-radius: 50px;
+            border-radius: 999px;
             text-decoration: none;
-            color: #1A1A1A; /* Cinza escuro para máxima legibilidade */
+            color: #FFFFFF;
             font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 2px;
@@ -112,44 +112,32 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            background: #F5F2EE; /* Off-white solicitado */
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border: 1px solid rgba(0,0,0,0.03);
+            background: #D8B4A0; /* Blush Pink Premium */
+            border: 1px solid #C9A96E; /* Matte Gold */
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            overflow: visible; /* Necessário para o efeito de pulso externo */
         }
-        /* Destaque para o botão principal (Loja/Catálogo) */
-        #btn-loja {
-            font-weight: 700;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.12);
-        }
-        /* Brilho Dourado Sutil */
+        /* Efeito de Pulso de Ouro (Sutil) */
         .link-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                transparent, 
-                transparent, 
-                rgba(212, 175, 55, 0.25), 
-                transparent,
-                transparent
-            );
-            animation: rotate 5s linear infinite;
-            z-index: 1;
+            inset: -4px;
+            border: 1px solid rgba(201, 169, 110, 0.4);
+            border-radius: 999px;
+            z-index: -1;
+            animation: pulse-gold 3s infinite ease-out;
+            pointer-events: none;
         }
-        /* O fundo off-white do botão */
+        /* Camada interna para garantir consistência */
         .link-card::after {
             content: '';
             position: absolute;
-            inset: 2px; 
-            background: #F5F2EE;
-            border-radius: 50px;
-            z-index: 2;
+            inset: 0;
+            background: #D8B4A0;
+            border-radius: 999px;
+            z-index: 1;
+            transition: background 0.3s ease;
         }
         .btn-content {
             position: relative;
@@ -162,26 +150,27 @@
         }
         .icon-box {
             position: absolute;
-            left: 20px;
+            left: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .icon-svg {
-            fill: #1A1A1A;
+            fill: #FFFFFF;
             width: 20px;
             height: 20px;
             transition: transform 0.3s ease;
         }
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes pulse-gold {
+            0% { transform: scale(0.98); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 0; }
+            100% { transform: scale(0.98); opacity: 0; }
         }
         .link-card:active {
             transform: scale(0.98);
         }
         .gold-accent {
-            color: var(--gold-dark);
+            color: #C9A96E;
         }
         .footer {
             margin-top: 60px;
@@ -193,8 +182,12 @@
         }
         @media (min-width: 768px) {
             .link-card:hover {
-                transform: scale(1.02);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+                transform: translateY(-4px) scale(1.02);
+                box-shadow: 0 12px 30px rgba(201, 169, 110, 0.25);
+                background: #e2c0ad;
+            }
+            .link-card:hover::after {
+                background: #e2c0ad;
             }
             .link-card:hover .icon-svg {
                 transform: scale(1.1);
